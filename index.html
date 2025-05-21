@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Interaktif - Irdan Guntara</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices:
+        - Tentang Saya: Text -> Inform -> Standard text block -> N/A -> Clear introduction to the individual.
+        - Proyek: Structured text -> Inform/Organize -> Card layout for each project using Tailwind CSS -> N/A -> Enhances readability and separation of project details.
+        - Keterampilan: List & Quantitative (assumed for chart) -> Inform/Compare -> Grouped list for qualitative skills, Bar Chart (Chart.js/Canvas) for quantitative self-assessment -> Chart tooltips for details -> Provides a quick visual summary of proficiencies.
+        - Pengalaman Organisasi: Structured text -> Inform/Organize -> Card-like sections -> N/A -> Clearly presents roles and responsibilities.
+        - Pendidikan/Sertifikasi: Structured text -> Inform -> Styled lists -> N/A -> Easy-to-scan chronological or categorized information.
+        - Kontak: Text & Links -> Inform/Action -> List with Unicode icons and clickable mailto/tel/http links -> Direct interaction -> Facilitates easy contact.
+        All choices support the goal of clear, accessible information presentation within a single-page application, adhering to NO SVG/Mermaid constraints.
+    -->
+    <style>
+      body {
+        font-family: "Inter", sans-serif; /* Using a common sans-serif font as Inter might not be default */
+      }
+      /* Fallback for Inter if not loaded by Tailwind's default */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+      html {
+        scroll-behavior: smooth;
+      }
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px; /* Max width for readability */
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px; /* Base height */
+        max-height: 400px; /* Max height */
+      }
+      @media (min-width: 768px) {
+        /* md breakpoint */
+        .chart-container {
+          height: 350px;
+        }
+      }
+      .nav-link {
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #0284c7; /* sky-600 */
+      }
+      .section-title {
+        border-bottom: 2px solid #0ea5e9; /* sky-500 */
+        padding-bottom: 0.5rem;
+      }
+      .card {
+        background-color: white;
+        border-radius: 0.75rem; /* rounded-xl */
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-lg */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-xl */
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div
+        class="container mx-auto px-6 py-3 flex justify-between items-center"
+      >
+        <a href="#" class="text-2xl font-bold text-sky-600">Irdan Guntara</a>
+        <div class="space-x-4 text-sm md:text-base">
+          <a href="#tentang" class="nav-link text-slate-600">Tentang Saya</a>
+          <a href="#proyek" class="nav-link text-slate-600">Proyek</a>
+          <a href="#keterampilan" class="nav-link text-slate-600"
+            >Keterampilan</a
+          >
+          <a href="#pengalaman" class="nav-link text-slate-600">Pengalaman</a>
+          <a href="#pendidikan" class="nav-link text-slate-600">Pendidikan</a>
+          <a href="#sertifikasi" class="nav-link text-slate-600">Sertifikasi</a>
+          <a href="#kontak" class="nav-link text-slate-600">Kontak</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-8">
+      <section id="tentang" class="mb-16 pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-6 section-title text-sky-700">
+          Tentang Saya
+        </h2>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <p class="text-lg leading-relaxed">
+            Saya adalah seorang mahasiswa yang bersemangat dalam bidang software
+            development dengan keahlian dalam desain web, pengembangan
+            front-end, administrasi basis data, dan administrasi jaringan. Saya
+            memiliki <em>passion</em> yang besar untuk menciptakan solusi
+            digital yang inovatif dan efisien. Melalui pengalaman akademis dan
+            organisasi, saya telah mengembangkan kemampuan dalam kepemimpinan,
+            kerja sama tim yang solid, dan manajemen proyek yang efektif. Saya
+            selalu antusias untuk mempelajari teknologi baru dan berkontribusi
+            dalam proyek-proyek yang menantang.
+          </p>
+        </div>
+      </section>
+
+      <section id="proyek" class="mb-16 pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-8 section-title text-sky-700">
+          Proyek-Proyek
+        </h2>
+        <p class="mb-8 text-slate-600">
+          Berikut adalah beberapa proyek yang telah saya kerjakan, menunjukkan
+          aplikasi praktis dari keahlian teknis dan kemampuan pemecahan masalah
+          saya.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card p-6">
+            <h3 class="text-2xl font-semibold mb-3 text-sky-600">
+              Website Sekolah SD
+            </h3>
+            <p class="text-sm text-slate-500 mb-2">
+              Membuat dan mengelola situs web informatif dan interaktif untuk
+              sebuah Sekolah Dasar di wilayah Kuningan.
+            </p>
+            <strong class="block mb-1 text-slate-700">Tujuan Proyek:</strong>
+            <ul class="list-disc list-inside text-slate-600 mb-3 text-sm">
+              <li>
+                Menyediakan platform informasi utama bagi orang tua, siswa, dan
+                calon siswa.
+              </li>
+              <li>
+                Mempermudah proses penyampaian informasi akademik dan
+                non-akademik.
+              </li>
+              <li>Meningkatkan citra dan visibilitas sekolah secara online.</li>
+            </ul>
+            <strong class="block mb-1 text-slate-700">Peran Saya:</strong>
+            <ul class="list-disc list-inside text-slate-600 mb-3 text-sm">
+              <li>Analisis kebutuhan pengguna.</li>
+              <li>Desain UI/UX yang ramah anak.</li>
+              <li>Pengembangan front-end (HTML, CSS, JavaScript).</li>
+              <li>Manajemen konten dan pemeliharaan rutin.</li>
+            </ul>
+            <strong class="block mb-1 text-slate-700">Teknologi:</strong>
+            <p class="text-slate-600 mb-3 text-sm">
+              HTML5, CSS3, JavaScript, WordPress, Figma.
+            </p>
+            <strong class="block mb-1 text-slate-700">Hasil/Pencapaian:</strong>
+            <p class="text-slate-600 text-sm">
+              Peningkatan aksesibilitas informasi, feedback positif dari guru
+              dan orang tua.
+            </p>
+          </div>
+
+          <div class="card p-6">
+            <h3 class="text-2xl font-semibold mb-3 text-sky-600">
+              Website Himpunan Mahasiswa
+            </h3>
+            <p class="text-sm text-slate-500 mb-2">
+              Mengelola, memperbarui, dan mengembangkan fitur untuk situs web
+              resmi Himpunan Mahasiswa Sistem Informasi Universitas Kuningan.
+            </p>
+            <strong class="block mb-1 text-slate-700">Tujuan Proyek:</strong>
+            <ul class="list-disc list-inside text-slate-600 mb-3 text-sm">
+              <li>Pusat informasi resmi kegiatan himpunan.</li>
+              <li>Memfasilitasi pendaftaran dan partisipasi acara.</li>
+              <li>Media publikasi karya mahasiswa.</li>
+            </ul>
+            <strong class="block mb-1 text-slate-700">Peran Saya:</strong>
+            <ul class="list-disc list-inside text-slate-600 mb-3 text-sm">
+              <li>Pemeliharaan dan pembaruan konten.</li>
+              <li>Pengembangan fitur baru (form pendaftaran, galeri).</li>
+              <li>Optimasi minor website.</li>
+              <li>Kolaborasi dengan tim media.</li>
+            </ul>
+            <strong class="block mb-1 text-slate-700">Teknologi:</strong>
+            <p class="text-slate-600 mb-3 text-sm">
+              HTML, CSS, JavaScript, PHP, MySQL, WordPress.
+            </p>
+            <strong class="block mb-1 text-slate-700">Fitur Utama:</strong>
+            <p class="text-slate-600 text-sm">
+              Kalender Acara, Galeri, Formulir Online, Blog.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="keterampilan" class="mb-16 pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-8 section-title text-sky-700">
+          Keterampilan
+        </h2>
+        <p class="mb-8 text-slate-600">
+          Saya memiliki beragam keahlian teknis dan soft skills yang terus saya
+          kembangkan. Berikut adalah ringkasan visual dari beberapa keahlian
+          utama saya, serta daftar lebih detail.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold mb-4 text-sky-600">
+              Keahlian Teknis
+            </h3>
+            <ul class="space-y-2 text-slate-600">
+              <li>
+                <strong>Desain Web:</strong> Prinsip UI/UX, Wireframing,
+                Prototyping (Figma, Canva)
+              </li>
+              <li>
+                <strong>Pengembangan Web:</strong>
+                <ul class="list-disc list-inside ml-4">
+                  <li>Front-End: HTML5, CSS3, JavaScript (ES6+), Bootstrap</li>
+                  <li>Framework/Library: (Sedang mempelajari React.js)</li>
+                  <li>Back-End: PHP (Dasar), MySQL</li>
+                  <li>Version Control: Git, GitHub</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Administrasi Jaringan:</strong> Konsep TCP/IP, DNS,
+                DHCP, Subnetting, Konfigurasi Router & Switch (Dasar, Mikrotik),
+                Keamanan Jaringan Dasar
+              </li>
+              <li>
+                <strong>Administrasi Basis Data:</strong> Desain Skema (ERD),
+                SQL (CRUD, Basic Joins), DBMS (MySQL, phpMyAdmin)
+              </li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold mb-4 text-sky-600">
+              Visualisasi Keahlian (Contoh)
+            </h3>
+            <div class="chart-container">
+              <canvas id="skillsChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="card p-6 mt-8">
+          <h3 class="text-xl font-semibold mb-4 text-sky-600">
+            Keahlian Lain & Bahasa
+          </h3>
+          <ul class="space-y-2 text-slate-600">
+            <li>
+              <strong>Komunikasi yang Kuat:</strong> Presentasi Teknis dan
+              Non-Teknis, Kolaborasi Tim, Dokumentasi Proyek (Dasar)
+            </li>
+            <li>
+              <strong>Bahasa:</strong>
+              <ul class="list-disc list-inside ml-4">
+                <li>Indonesia (Native)</li>
+                <li>
+                  Inggris (Kemampuan membaca dokumentasi teknis, percakapan
+                  dasar)
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="pengalaman" class="mb-16 pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-8 section-title text-sky-700">
+          Pengalaman Organisasi
+        </h2>
+        <p class="mb-8 text-slate-600">
+          Keterlibatan aktif dalam organisasi telah mengasah kemampuan
+          kepemimpinan, kerja tim, dan manajemen proyek saya.
+        </p>
+        <div class="space-y-8">
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold text-sky-600">
+              HIMPUNAN MAHASISWA (Sistem Informasi Universitas Kuningan)
+            </h3>
+            <p class="text-sm text-slate-500 mb-2">
+              Anggota Divisi Media dan Informasi | 2023 - Sekarang
+            </p>
+            <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
+              <li>
+                Berkontribusi aktif dalam mengorganisir dan mempublikasikan
+                acara-acara himpunan seperti seminar "TechFuture 2024" dan
+                workshop "Web Design for Beginners" (rata-rata 100+ peserta).
+              </li>
+              <li>
+                Terlibat dalam perencanaan dan implementasi program "SI Mengajar
+                Coding".
+              </li>
+              <li>
+                Membantu pengelolaan konten media sosial dan website himpunan.
+              </li>
+              <li>
+                Mengembangkan materi promosi digital untuk berbagai kegiatan.
+              </li>
+            </ul>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold text-sky-600">
+              PERKUMPULAN BARUDAK KOMPUTER (PBK)
+            </h3>
+            <p class="text-sm text-slate-500 mb-2">
+              Koordinator Divisi Web Development | 2023 - Sekarang
+            </p>
+            <ul class="list-disc list-inside text-slate-600 space-y-1 text-sm">
+              <li>
+                Mengkoordinasikan dan menjadi fasilitator dalam sesi pelatihan
+                teknologi dasar (Dasar HTML & CSS, Pengenalan JavaScript).
+              </li>
+              <li>
+                Berpartisipasi dalam tim perancangan dan pengembangan versi awal
+                situs web internal PBK.
+              </li>
+              <li>
+                Berkolaborasi dalam proyek pengembangan aplikasi sederhana
+                berbasis web untuk studi kasus internal.
+              </li>
+              <li>
+                Aktif berbagi pengetahuan dan membantu anggota lain dalam
+                memecahkan masalah teknis.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="pendidikan" class="mb-16 pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-8 section-title text-sky-700">
+          Pendidikan
+        </h2>
+        <p class="mb-8 text-slate-600">
+          Latar belakang pendidikan formal saya yang menjadi dasar pengetahuan
+          dan keahlian.
+        </p>
+        <div class="space-y-6">
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold text-sky-600">
+              UNIVERSITAS KUNINGAN
+            </h3>
+            <p class="text-slate-600">Sarjana Sistem Informasi</p>
+            <p class="text-sm text-slate-500">2023 - Perkiraan Lulus: 2027</p>
+            <p class="text-sm text-slate-500 mt-1">
+              Mata Kuliah Relevan: Pemrograman Web, Basis Data, Jaringan
+              Komputer, Rekayasa Perangkat Lunak, Analisis dan Perancangan
+              Sistem Informasi, Interaksi Manusia dan Komputer.
+            </p>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold text-sky-600">SMA 1 CIGUGUR</h3>
+            <p class="text-slate-600">Jurusan IPA</p>
+            <p class="text-sm text-slate-500">Lulus: 2023</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sertifikasi" class="mb-16 pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-8 section-title text-sky-700">
+          Sertifikasi
+        </h2>
+        <p class="mb-8 text-slate-600">
+          Pengakuan formal atas kompetensi dan pengetahuan yang saya miliki di
+          bidang tertentu.
+        </p>
+        <div class="space-y-6">
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold text-sky-600">
+              Developer Certificate - Alibaba Cloud
+            </h3>
+            <p class="text-sm text-slate-500 mb-1">Diperoleh: 2024</p>
+            <p class="text-slate-600 text-sm">
+              Fokus: Cloud Computing Fundamentals & Basic Service Operation.
+            </p>
+          </div>
+          <div class="card p-6">
+            <h3 class="text-xl font-semibold text-sky-600">
+              Junior Network Administrator - Lembaga Sertifikasi Profesi
+              Informatika
+            </h3>
+            <p class="text-sm text-slate-500 mb-1">Diperoleh: 2024</p>
+            <p class="text-slate-600 text-sm">
+              Fokus: Konsep dasar jaringan, instalasi dan konfigurasi perangkat
+              jaringan skala kecil, troubleshooting dasar.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="kontak" class="pt-16 -mt-16">
+        <h2 class="text-3xl font-bold mb-8 section-title text-sky-700">
+          Kontak
+        </h2>
+        <p class="mb-8 text-slate-600">
+          Saya terbuka untuk diskusi lebih lanjut, peluang kolaborasi, atau jika
+          Anda memiliki pertanyaan. Jangan ragu untuk menghubungi saya melalui:
+        </p>
+        <div class="card p-6">
+          <ul class="space-y-3">
+            <li class="flex items-center">
+              <span class="text-sky-600 mr-3 text-xl">📧</span>
+              <a
+                href="mailto:irdanguntara582@gmail.com"
+                class="text-slate-600 hover:text-sky-700"
+                >irdanguntara582@gmail.com</a
+              >
+            </li>
+            <li class="flex items-center">
+              <span class="text-sky-600 mr-3 text-xl">📞</span>
+              <a
+                href="tel:085156844092"
+                class="text-slate-600 hover:text-sky-700"
+                >0851-5684-4092</a
+              >
+            </li>
+            <li class="flex items-center">
+              <span class="text-sky-600 mr-3 text-xl">📍</span>
+              <span class="text-slate-600"
+                >Jl. Raya Cileuleuy, Kec. Cigugur, Kabupaten Kuningan, Jawa
+                Barat</span
+              >
+            </li>
+            <li class="flex items-center">
+              <span class="text-sky-600 mr-3 text-xl">🔗</span>
+              <a
+                href="https://github.com/IrdanGu"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-600 hover:text-sky-700"
+                >github.com/IrdanGu</a
+              >
+            </li>
+            <li class="flex items-center">
+              <span class="text-sky-600 mr-3 text-xl">💼</span>
+              <a
+                href="https://linkedin.com/in/irdanguntara"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-600 hover:text-sky-700"
+                >linkedin.com/in/irdanguntara (Contoh)</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 text-center p-6 mt-16">
+      <p>
+        &copy; <span id="currentYear"></span> Irdan Guntara. Dibuat dengan ❤️
+        dan Tailwind CSS.
+      </p>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      // Skills Chart
+      const ctx = document.getElementById("skillsChart").getContext("2d");
+      const skillsChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "Desain Web",
+            "Pengembangan Web (Frontend)",
+            "Pengembangan Web (Backend)",
+            "Adm. Jaringan",
+            "Adm. Basis Data",
+            "Komunikasi",
+          ],
+          datasets: [
+            {
+              label: "Tingkat Keahlian (Perkiraan %)",
+              data: [80, 85, 60, 70, 75, 90], // Assumed data
+              backgroundColor: [
+                "rgba(59, 130, 246, 0.7)", // blue-500
+                "rgba(14, 165, 233, 0.7)", // sky-500
+                "rgba(34, 197, 94, 0.7)", // green-500
+                "rgba(249, 115, 22, 0.7)", // orange-500
+                "rgba(168, 85, 247, 0.7)", // purple-500
+                "rgba(239, 68, 68, 0.7)", // red-500
+              ],
+              borderColor: [
+                "rgba(59, 130, 246, 1)",
+                "rgba(14, 165, 233, 1)",
+                "rgba(34, 197, 94, 1)",
+                "rgba(249, 115, 22, 1)",
+                "rgba(168, 85, 247, 1)",
+                "rgba(239, 68, 68, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                color: "#475569", // slate-600
+              },
+              grid: {
+                color: "#e2e8f0", // slate-200
+              },
+            },
+            x: {
+              ticks: {
+                color: "#475569", // slate-600
+                maxRotation: 45,
+                minRotation: 45,
+                callback: function (value, index, values) {
+                  const label = this.getLabelForValue(value);
+                  if (label.length > 16) {
+                    return label.substring(0, 16) + "...";
+                  }
+                  return label;
+                },
+              },
+              grid: {
+                display: false,
+              },
+            },
+          },
+          plugins: {
+            legend: {
+              display: false, // Or true if you want to show it
+            },
+            tooltip: {
+              backgroundColor: "#0f172a", // slate-900
+              titleColor: "#f1f5f9", // slate-100
+              bodyColor: "#cbd5e1", // slate-300
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.parsed.y !== null) {
+                    label += context.parsed.y + "%";
+                  }
+                  return label;
+                },
+              },
+            },
+          },
+        },
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
