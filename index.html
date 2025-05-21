@@ -4,8 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portofolio Interaktif - Irdan Guntara</title>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
     <!-- Visualization & Content Choices:
         - Tentang Saya: Text -> Inform -> Standard text block -> N/A -> Clear introduction to the individual.
         - Proyek: Structured text -> Inform/Organize -> Card layout for each project using Tailwind CSS -> N/A -> Enhances readability and separation of project details.
@@ -63,13 +69,17 @@
       }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800">
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+  <body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100"
+  >
+    <nav class="bg-white dark:bg-slate-800 shadow-md sticky top-0 z-50">
       <div
         class="container mx-auto px-6 py-3 flex justify-between items-center"
       >
-        <a href="#" class="text-2xl font-bold text-sky-600">Irdan Guntara</a>
-        <div class="space-x-4 text-sm md:text-base">
+        <a href="#" class="text-2xl font-bold text-sky-600 dark:text-sky-400"
+          >Irdan Guntara</a
+        >
+        <div class="space-x-4 text-sm md:text-base flex items-center">
           <a href="#tentang" class="nav-link text-slate-600">Tentang Saya</a>
           <a href="#proyek" class="nav-link text-slate-600">Proyek</a>
           <a href="#keterampilan" class="nav-link text-slate-600"
@@ -79,16 +89,32 @@
           <a href="#pendidikan" class="nav-link text-slate-600">Pendidikan</a>
           <a href="#sertifikasi" class="nav-link text-slate-600">Sertifikasi</a>
           <a href="#kontak" class="nav-link text-slate-600">Kontak</a>
+          <!-- Dark mode toggle button -->
+          <button
+            id="darkModeToggle"
+            class="ml-4 px-2 py-1 rounded text-slate-600 border border-slate-300 hover:bg-slate-100 transition"
+            title="Toggle Dark Mode"
+          >
+            🌙
+          </button>
         </div>
       </div>
     </nav>
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      title="Kembali ke atas"
+      class="fixed bottom-6 right-6 bg-sky-600 dark:bg-sky-400 text-white p-3 rounded-full shadow-lg hover:bg-sky-700 dark:hover:bg-sky-500 transition hidden z-50"
+    >
+      ↑
+    </button>
 
     <main class="container mx-auto px-6 py-8">
       <section id="tentang" class="mb-16 pt-16 -mt-16">
         <h2 class="text-3xl font-bold mb-6 section-title text-sky-700">
           Tentang Saya
         </h2>
-        <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
           <p class="text-lg leading-relaxed">
             Saya adalah seorang mahasiswa yang bersemangat dalam bidang software
             development dengan keahlian dalam desain web, pengembangan
@@ -113,7 +139,7 @@
           saya.
         </p>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-2xl font-semibold mb-3 text-sky-600">
               Website Sekolah SD
             </h3>
@@ -151,7 +177,7 @@
             </p>
           </div>
 
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-2xl font-semibold mb-3 text-sky-600">
               Website Himpunan Mahasiswa
             </h3>
@@ -194,7 +220,7 @@
           utama saya, serta daftar lebih detail.
         </p>
         <div class="grid md:grid-cols-2 gap-8 items-start">
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold mb-4 text-sky-600">
               Keahlian Teknis
             </h3>
@@ -223,7 +249,7 @@
               </li>
             </ul>
           </div>
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold mb-4 text-sky-600">
               Visualisasi Keahlian (Contoh)
             </h3>
@@ -232,7 +258,7 @@
             </div>
           </div>
         </div>
-        <div class="card p-6 mt-8">
+        <div class="card p-6 dark:bg-slate-800 dark:text-slate-100 mt-8">
           <h3 class="text-xl font-semibold mb-4 text-sky-600">
             Keahlian Lain & Bahasa
           </h3>
@@ -264,7 +290,7 @@
           kepemimpinan, kerja tim, dan manajemen proyek saya.
         </p>
         <div class="space-y-8">
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold text-sky-600">
               HIMPUNAN MAHASISWA (Sistem Informasi Universitas Kuningan)
             </h3>
@@ -289,7 +315,7 @@
               </li>
             </ul>
           </div>
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold text-sky-600">
               PERKUMPULAN BARUDAK KOMPUTER (PBK)
             </h3>
@@ -327,7 +353,7 @@
           dan keahlian.
         </p>
         <div class="space-y-6">
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold text-sky-600">
               UNIVERSITAS KUNINGAN
             </h3>
@@ -339,7 +365,7 @@
               Sistem Informasi, Interaksi Manusia dan Komputer.
             </p>
           </div>
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold text-sky-600">SMA 1 CIGUGUR</h3>
             <p class="text-slate-600">Jurusan IPA</p>
             <p class="text-sm text-slate-500">Lulus: 2023</p>
@@ -356,7 +382,7 @@
           bidang tertentu.
         </p>
         <div class="space-y-6">
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold text-sky-600">
               Developer Certificate - Alibaba Cloud
             </h3>
@@ -365,7 +391,7 @@
               Fokus: Cloud Computing Fundamentals & Basic Service Operation.
             </p>
           </div>
-          <div class="card p-6">
+          <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
             <h3 class="text-xl font-semibold text-sky-600">
               Junior Network Administrator - Lembaga Sertifikasi Profesi
               Informatika
@@ -387,7 +413,7 @@
           Saya terbuka untuk diskusi lebih lanjut, peluang kolaborasi, atau jika
           Anda memiliki pertanyaan. Jangan ragu untuk menghubungi saya melalui:
         </p>
-        <div class="card p-6">
+        <div class="card p-6 dark:bg-slate-800 dark:text-slate-100">
           <ul class="space-y-3">
             <li class="flex items-center">
               <span class="text-sky-600 mr-3 text-xl">📧</span>
@@ -437,13 +463,16 @@
       </section>
     </main>
 
-    <footer class="bg-slate-800 text-slate-300 text-center p-6 mt-16">
+    <footer
+      class="bg-slate-800 dark:bg-slate-900 text-slate-300 dark:text-slate-400 text-center p-6 mt-16"
+    >
       <p>
         &copy; <span id="currentYear"></span> Irdan Guntara. Dibuat dengan ❤️
         dan Tailwind CSS.
       </p>
     </footer>
 
+    <script src="assets/js/main.js"></script>
     <script>
       // Set current year in footer
       document.getElementById("currentYear").textContent =
@@ -555,6 +584,41 @@
             });
           }
         });
+      });
+
+      // Dark mode toggle logic
+      const darkToggle = document.getElementById("darkModeToggle");
+      const html = document.documentElement;
+      function setDarkMode(on) {
+        if (on) {
+          html.classList.add("dark");
+          document.body.classList.add("bg-slate-900", "text-slate-100");
+          document.body.classList.remove("bg-slate-50", "text-slate-800");
+          darkToggle.textContent = "☀️";
+        } else {
+          html.classList.remove("dark");
+          document.body.classList.remove("bg-slate-900", "text-slate-100");
+          document.body.classList.add("bg-slate-50", "text-slate-800");
+          darkToggle.textContent = "🌙";
+        }
+      }
+      // Initial mode
+      setDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      darkToggle.addEventListener("click", () => {
+        const isDark = html.classList.contains("dark");
+        setDarkMode(!isDark);
+      });
+      // Back to Top logic
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTop.classList.remove("hidden");
+        } else {
+          backToTop.classList.add("hidden");
+        }
+      });
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     </script>
   </body>
